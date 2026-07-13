@@ -1,16 +1,17 @@
-## Hi there 👋
+# Garrett Peterson
 
-<!--
-**garrett-peterson/garrett-peterson** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Hello, GitHub! 👋
 
-Here are some ideas to get you started:
+I'm Garrett Peterson, a student at Brigham Young University-Idaho studying software development, estimated to graduate with my bachelors in Febuary of 2027
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## About Me
+
+I am working full time as a junior software developer for Smart Training LLC, I work on turning react mockups into working database backed blazor pages.
+In my free time I enjoy reading and writing fantasy, playing guitar, buildings legos, playing all sorts of games and spending time with my family.
+
+## Technologies and Tools
+
+- Proficient in: C#, Javascript, Jave, Python, HTML, CSS, SQL
+- Skills: Creativity, fast learner, leadership, thinking outside the box, willing to ask for help, good communicator 
+
+Feel free to explore my repositories and don't hesitate to reach out. Happy coding! 🚀
