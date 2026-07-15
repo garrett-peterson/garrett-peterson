@@ -1,0 +1,114 @@
+.site-header[b-rafk4aeff6] {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(7, 17, 13, 0.97);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(201, 209, 211, 0.18);
+    box-shadow: 0 8px 24px rgba(7, 17, 13, 0.22);
+    backdrop-filter: blur(10px);
+}
+
+.brand[b-rafk4aeff6] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.brand-mark[b-rafk4aeff6] {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(238, 243, 244, 0.75);
+    border-radius: 50%;
+    background:
+        linear-gradient(135deg, #eef3f4, #9ba7aa);
+    color: #07110d;
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 18px rgba(201, 209, 211, 0.18);
+}
+
+.brand-text[b-rafk4aeff6] {
+    white-space: nowrap;
+}
+
+.site-nav[b-rafk4aeff6] {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.site-nav a[b-rafk4aeff6] {
+    color: #d8e1df;
+    text-decoration: none;
+    font-weight: 800;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.site-nav a:hover[b-rafk4aeff6] {
+    color: #eef3f4;
+    text-shadow: 0 0 12px rgba(201, 209, 211, 0.45);
+}
+
+.menu-toggle[b-rafk4aeff6] {
+    display: none;
+    border: 1px solid rgba(238, 243, 244, 0.55);
+    background: transparent;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 0.65rem 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-toggle:hover[b-rafk4aeff6] {
+    background: rgba(238, 243, 244, 0.1);
+    box-shadow: 0 0 16px rgba(201, 209, 211, 0.16);
+}
+
+@media (max-width: 850px) {
+    .site-header[b-rafk4aeff6] {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    .brand-text[b-rafk4aeff6] {
+        white-space: normal;
+    }
+
+    .menu-toggle[b-rafk4aeff6] {
+        display: inline-block;
+    }
+
+    .site-nav[b-rafk4aeff6] {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(201, 209, 211, 0.14);
+    }
+
+    .site-nav.open[b-rafk4aeff6] {
+        display: flex;
+    }
+
+    .site-nav a[b-rafk4aeff6] {
+        width: 100%;
+        padding: 0.75rem 0;
+    }
+}

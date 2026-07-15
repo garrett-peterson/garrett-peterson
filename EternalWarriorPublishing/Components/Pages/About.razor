@@ -1,0 +1,198 @@
+@page "/about"
+@rendermode InteractiveServer
+
+<PageTitle>About Us | Eternal Warrior Publishing</PageTitle>
+
+<section class="page-hero-section">
+    <div class="hero-content">
+        <p class="eyebrow">Never Stop Believing</p>
+        <h1>About Us</h1>
+        <p class="hero-description">
+            Learn more about the team behind Eternal Warrior Publishing.
+        </p>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-content">
+        <p class="eyebrow">Who We Are</p>
+        <h2>We believe myth-making can point readers toward the true harbor.</h2>
+        <p>
+            Eternal Warrior Publishing is a fictional independent publishing company devoted to mythic,
+            hopeful, and morally serious storytelling. We believe stories are not merely escapes from
+            reality. At their best, they are acts of sub-creation: imperfect but meaningful attempts to
+            reflect truth, beauty, courage, repentance, and light.
+        </p>
+    </div>
+</section>
+
+<section class="values-section">
+    <div class="section-heading">
+        <p class="eyebrow">What We Believe</p>
+        <h2>Stories should leave readers stronger than they were before.</h2>
+    </div>
+
+    <div class="values-grid">
+        @foreach (var value in CompanyValues)
+        {
+            <article class="value-card">
+                <div class="value-icon">@value.Icon</div>
+                <h3>@value.Title</h3>
+                <p>@value.Description</p>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="team-section">
+    <div class="section-heading">
+        <p class="eyebrow">Our Team</p>
+        <h2>The people behind the pages</h2>
+    </div>
+
+    <div class="team-grid">
+        @foreach (var member in TeamMembers)
+        {
+            <article class="team-card">
+                <div class="team-avatar">
+                    @member.Initials
+                </div>
+
+                <div class="team-info">
+                    <h3>@member.Name</h3>
+                    <p class="team-role">@member.Role</p>
+                    <p>@member.Description</p>
+                </div>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="timeline-section">
+    <div class="section-heading">
+        <p class="eyebrow">Our Journey</p>
+        <h2>How Eternal Warrior Publishing began</h2>
+    </div>
+
+    <div class="timeline">
+        @foreach (var item in TimelineItems)
+        {
+            <article class="timeline-item">
+                <span class="timeline-year">@item.Year</span>
+                <div>
+                    <h3>@item.Title</h3>
+                    <p>@item.Description</p>
+                </div>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="about-cta-section">
+    <div class="about-cta-content">
+        <p class="eyebrow">Join the Quest</p>
+        <h2>Looking for your next heroic read?</h2>
+        <p>
+            Explore our catalog of bold adventures, unforgettable characters, and stories written
+            for readers who still believe light can overcome darkness.
+        </p>
+
+        <a class="primary-button" href="/books">
+            Browse Our Books
+        </a>
+    </div>
+</section>
+
+@code {
+
+    private List<CompanyValue> CompanyValues = new()
+    {
+        new CompanyValue
+        {
+            Icon = "✨",
+            Title = "Splintered Light",
+            Description = "We seek stories that carry glimpses of truth, even through broken worlds, flawed heroes, and imperfect myths."
+        },
+        new CompanyValue
+        {
+            Icon = "📖",
+            Title = "Sub-Creation",
+            Description = "We believe creating imaginary worlds is one way people imitate, honor, and reach toward divine creativity."
+        },
+        new CompanyValue
+        {
+            Icon = "🔥",
+            Title = "The True Harbor",
+            Description = "Our stories may wander through darkness, but they should ultimately steer toward hope, meaning, and restoration."
+        }
+    };
+
+    private List<TeamMember> TeamMembers = new()
+    {
+        new TeamMember
+        {
+            Name = "Elena Ward",
+            Role = "Founder & Publisher",
+            Description = "Elena leads the vision for Eternal Warrior Publishing and champions stories with heart, scale, and purpose.",
+            Initials = "EW"
+        },
+        new TeamMember
+        {
+            Name = "Marcus Vale",
+            Role = "Senior Editor",
+            Description = "Marcus works with authors to sharpen their worlds, strengthen their characters, and refine every chapter.",
+            Initials = "MV"
+        },
+        new TeamMember
+        {
+            Name = "Talia Reed",
+            Role = "Creative Director",
+            Description = "Talia shapes the visual identity of each title, from cover concepts to launch campaigns.",
+            Initials = "TR"
+        }
+    };
+
+    private List<TimelineItem> TimelineItems = new()
+    {
+        new TimelineItem
+        {
+            Year = "2022",
+            Title = "The idea was born",
+            Description = "Eternal Warrior Publishing began as a small creative project built around a love for heroic fiction."
+        },
+        new TimelineItem
+        {
+            Year = "2023",
+            Title = "Our first stories took shape",
+            Description = "The team began developing a catalog of fantasy and adventure titles with connected themes of courage and sacrifice."
+        },
+        new TimelineItem
+        {
+            Year = "2024",
+            Title = "The catalog expanded",
+            Description = "New authors, new worlds, and new series concepts helped shape the company into a fictional publishing house."
+        }
+    };
+
+    private class CompanyValue
+    {
+        public string Icon { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+    }
+
+    private class TeamMember
+    {
+        public string Name { get; set; } = "";
+        public string Role { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Initials { get; set; } = "";
+    }
+
+    private class TimelineItem
+    {
+        public string Year { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+    }
+}

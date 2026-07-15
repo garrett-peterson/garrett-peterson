@@ -1,0 +1,130 @@
+@page "/submissions"
+@rendermode InteractiveServer
+@using EternalWarriorPublishing.Models
+
+<PageTitle>Submissions | Eternal Warrior Publishing</PageTitle>
+
+<section class="hero-section">
+    <div class="hero-content">
+        <p class="eyebrow">For Writers</p>
+        <h1>Writer Submissions</h1>
+        <p class="hero-description">
+            We are looking for myths that carry light: stories of courage, fallenness,
+            sacrifice, restoration, and hope.
+        </p>
+    </div>
+</section>
+
+<section class="submissions-section">
+    <div class="section-heading">
+        <p class="eyebrow">Submit Your Manuscript</p>
+        <h2>We are looking for bold stories with unforgettable characters.</h2>
+        <p>
+            Eternal Warrior Publishing is currently accepting fantasy, adventure,
+            historical fantasy, and heroic fiction submissions.
+        </p>
+    </div>
+
+    <div class="submission-layout">
+        <article class="submission-card">
+            <h3>What We Accept</h3>
+
+            <ul>
+                <li>Mythic fantasy novels</li>
+                <li>Heroic adventure stories</li>
+                <li>Historical fantasy with moral weight</li>
+                <li>Stories of fall, repentance, and restoration</li>
+                <li>Completed manuscripts or polished proposals</li>
+            </ul>
+        </article>
+
+        <article class="submission-card">
+            <h3>Submission Guidelines</h3>
+
+            <ul>
+                <li>Include a short author bio.</li>
+                <li>Include a one-page story summary.</li>
+                <li>Attach the first three chapters.</li>
+                <li>Tell us the genre and target audience.</li>
+                <li>Please allow 6–8 weeks for a response.</li>
+            </ul>
+        </article>
+    </div>
+</section>
+
+<section class="submission-form-section">
+    <div class="submission-form-card">
+        <p class="eyebrow">Start Here</p>
+        <h2>Submission Interest Form</h2>
+
+        <EditForm Model="Submission" OnValidSubmit="SubmitInterest">
+            <DataAnnotationsValidator />
+
+            <div class="validation-summary-wrapper">
+                <ValidationSummary />
+            </div>
+
+            <div class="form-grid">
+                <label>
+                    Author Name
+                    <InputText @bind-Value="Submission.AuthorName" placeholder="Enter your name" />
+                    <ValidationMessage For="@(() => Submission.AuthorName)" />
+                </label>
+
+                <label>
+                    Email
+                    <InputText @bind-Value="Submission.Email" placeholder="Enter your email" />
+                    <ValidationMessage For="@(() => Submission.Email)" />
+                </label>
+
+                <label>
+                    Story Title
+                    <InputText @bind-Value="Submission.StoryTitle" placeholder="Enter your story title" />
+                    <ValidationMessage For="@(() => Submission.StoryTitle)" />
+                </label>
+
+                <label>
+                    Genre
+                    <InputSelect @bind-Value="Submission.Genre">
+                        <option value="Epic Fantasy">Epic Fantasy</option>
+                        <option value="Heroic Adventure">Heroic Adventure</option>
+                        <option value="Historical Fantasy">Historical Fantasy</option>
+                        <option value="Young Adult Fantasy">Young Adult Fantasy</option>
+                        <option value="Other">Other</option>
+                    </InputSelect>
+                    <ValidationMessage For="@(() => Submission.Genre)" />
+                </label>
+            </div>
+
+            <label class="full-width-label">
+                Short Pitch
+                <InputTextArea @bind-Value="Submission.Pitch" placeholder="Tell us about your story"></InputTextArea>
+                <ValidationMessage For="@(() => Submission.Pitch)" />
+            </label>
+
+            <button type="submit" class="primary-button">
+                Submit Interest
+            </button>
+        </EditForm>
+
+        @if (showConfirmation)
+        {
+            <div class="submission-confirmation">
+                <strong>Submission received!</strong>
+                <p>
+                    Thanks, @Submission.AuthorName. Your interest form for <em>@Submission.StoryTitle</em> has been recorded.
+                </p>
+            </div>
+        }
+    </div>
+</section>
+
+@code {
+    private SubmissionInterest Submission = new();
+    private bool showConfirmation = false;
+
+    private void SubmitInterest()
+    {
+        showConfirmation = true;
+    }
+}

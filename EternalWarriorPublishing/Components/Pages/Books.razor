@@ -1,0 +1,67 @@
+@page "/books"
+@rendermode InteractiveServer
+@using EternalWarriorPublishing.Models
+@using EternalWarriorPublishing.Services
+@inject BookService BookService
+
+<PageTitle>Books | Eternal Warrior Publishing</PageTitle>
+
+<section class="page-hero-section">
+    <div class="hero-content">
+        <p class="eyebrow">Adventure Awaits</p>
+        <h1>Eternal Warrior Catalog</h1>
+        <p class="hero-description">
+            Explore our exciting titles by our talented authors.
+        </p>
+    </div>
+</section>
+
+<section class="featured-section">
+    <div class="section-heading">
+        <p class="eyebrow">Browse Titles</p>
+        <h2>@(displayType ? "List View" : "Grid View")</h2>
+
+        <button type="button" class="primary-button" @onclick="ToggleDisplay">
+            Switch to @(displayType ? "Grid View" : "List View")
+        </button>
+    </div>
+
+    @if (displayType)
+    {
+        <div class="book-list">
+            @foreach (var book in BookList)
+            {
+                <article class="book-list-item">
+                    <strong>@book.Title</strong>
+                    <span>@book.Genre</span>
+                    <p>@book.Description</p>
+                </article>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="book-grid">
+            @foreach (var book in BookList)
+            {
+                <BookCard Book="book" />
+            }
+        </div>
+    }
+</section>
+
+@code {
+    private bool displayType = false;
+
+    private List<Book> BookList = new();
+
+    protected override void OnInitialized()
+    {
+        BookList = BookService.GetAllBooks();
+    }
+
+    private void ToggleDisplay()
+    {
+        displayType = !displayType;
+    }
+}

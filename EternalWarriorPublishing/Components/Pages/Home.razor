@@ -1,0 +1,72 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using EternalWarriorPublishing.Models
+@using EternalWarriorPublishing.Services
+@inject BookService BookService
+
+<PageTitle>Eternal Warrior Publishing</PageTitle>
+
+<section class="hero-section home-hero">
+    <div class="hero-content">
+        <p class="eyebrow">Myth, Light, and Sub-Creation</p>
+        <h1>Eternal Warrior Publishing</h1>
+        <p class="hero-description">
+            Publishing stories that reflect splintered fragments of true light —
+            myths of courage, sacrifice, repentance, and hope.
+        </p>
+
+        <div class="hero-actions">
+            <a class="primary-button" href="/books">
+                Explore the Myths
+            </a>
+
+            <a class="secondary-button" href="/submissions">
+                Submit Your Story
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="myth-section">
+    <div class="myth-content">
+        <p class="eyebrow">Our Philosophy</p>
+        <h2>Myths are not lies. They are broken mirrors catching light.</h2>
+        <p>
+            We publish stories built on the belief that invented worlds can still gesture toward
+            eternal things. Our books may pass through shadow, ruin, exile, and battle, but they
+            are always searching for the harbor beyond the storm.
+        </p>
+    </div>
+</section>
+
+<section class="featured-section" id="books">
+    <div class="section-heading">
+        <p class="eyebrow">Featured Titles</p>
+        <h2>Books forged for brave readers</h2>
+    </div>
+
+    <div class="book-grid">
+        @foreach (var book in FeaturedBooks)
+        {
+            <BookCard Book="book" />
+        }
+    </div>
+
+</section>
+
+@code {
+    private bool showSubmissionInfo = false;
+
+    private List<Book> FeaturedBooks = new();
+
+    protected override void OnInitialized()
+    {
+        FeaturedBooks = BookService.GetFeaturedBooks();
+    }
+
+    private void ToggleSubmissionInfo()
+    {
+        showSubmissionInfo = !showSubmissionInfo;
+    }
+
+}

@@ -1,0 +1,81 @@
+@page "/books/{slug}"
+@rendermode InteractiveServer
+@using EternalWarriorPublishing.Models
+@using EternalWarriorPublishing.Services
+@inject BookService BookService
+
+@if (Book is null)
+{
+    <PageTitle>Book Not Found | Eternal Warrior Publishing</PageTitle>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <p class="eyebrow">Not Found</p>
+            <h1>Book Not Found</h1>
+            <p class="hero-description">
+                We could not find a book matching this link.
+            </p>
+
+            <a class="primary-button" href="/books">
+                Back to Books
+            </a>
+        </div>
+    </section>
+}
+else
+{
+    <PageTitle>@Book.Title | Eternal Warrior Publishing</PageTitle>
+
+    <section class="book-detail-hero">
+        <div class="book-detail-layout">
+            <div class="book-detail-cover">
+                @Book.Initials
+            </div>
+
+            <div class="book-detail-content">
+                <p class="eyebrow">@Book.Genre</p>
+                <h1>@Book.Title</h1>
+                <p class="book-detail-description">
+                    @Book.Description
+                </p>
+
+                <div class="book-detail-actions">
+                    <a class="primary-button" href="/submissions">
+                        Request Review Copy
+                    </a>
+
+                    <a class="secondary-button dark-button" href="/books">
+                        Back to Books
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="book-detail-section">
+        <div class="book-detail-panel">
+            <p class="eyebrow">About This Book</p>
+            <h2>A story forged for brave readers</h2>
+            <p>
+                This placeholder section gives you room to add a longer book summary,
+                author information, publication details, reviews, or a sample chapter later.
+            </p>
+            <p>
+                For now, the important thing is that this page is loading one specific book
+                based on the URL.
+            </p>
+        </div>
+    </section>
+}
+
+@code {
+    [Parameter]
+    public string Slug { get; set; } = "";
+
+    private Book? Book;
+
+    protected override void OnParametersSet()
+    {
+        Book = BookService.GetBookBySlug(Slug);
+    }
+}
