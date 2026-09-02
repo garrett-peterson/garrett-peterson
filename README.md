@@ -2,7 +2,7 @@
 
 Hello, GitHub! 👋
 
-I'm Garrett Peterson, a student at Brigham Young University-Idaho studying software development, estimated to graduate with my bachelors in Febuary of 2027
+I'm Garrett Peterson, a student at Brigham Young University-Idaho studying software development, estimated to graduate with my bachelors in December of 2026
 
 ## About Me
 
